@@ -1,0 +1,236 @@
+<h2 class="jumbotron text-center">{{stock.Name}} | {{stock.Symbol}}</h2>
+<h2 class="jumbotron text-center shadow p-3 mb-5 bg-white rounded"># of Shares: {{stock.NumberOfShares | number: '1.2-2'}} Cr | 
+  Price: {{stock.CMP |  number: '1.2-2'}} | MarketCap (Cr): {{stock.MarketCap |  number: '1.2-2'}}
+
+</h2>
+<!-- <div>{{test}}</div> -->
+
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="EPV method">
+      <table class="table table-borderless shadow p-3 mb-5 bg-white rounded float-left">        
+        <tbody>
+          <tr >
+            <td></td>
+            <td>Avg. profit 5 years (Cr)</td>
+            <td >{{EPVAvgProfit |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>EPV at 7% returns (Cr)</td>
+            <td >{{EPVEPV |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>+Investments (Cr)</td>
+            <td >{{stock.Investments |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td >+Cash Equivalents (Cr)</td>
+            <td >{{stock.CashEq |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td >Total EPV (Cr)</td>
+            <td >{{EPVTotalEPV |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td >Borrowings (Cr)</td>
+            <td >{{stock.Debt |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td >Other Liabilities (Cr)</td>
+            <td >{{stock.Liabilities |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td  colspan="1"></td>
+            <td  colspan="1"  >IV1 (- All Liabilities)</td>
+            <td colspan="1"  >IV2 (- Borrowings)</td>            
+          </tr>
+          <tr>
+            <td  colspan="1"></td>
+            <td  colspan="1"  >{{EPVIV1 |  number: '1.0-0'}}</td>
+            <td  colspan="1"  >{{EPVIV2 |  number: '1.0-0'}}</td>
+
+          </tr>
+          <tr>
+            <td  colspan="1">Profitability</td>
+            <td  colspan="1">{{EPVProfitability1 |  percent}}</td>
+            <td  colspan="1">{{EPVProfitability2 |  percent}}</td>
+
+          </tr>
+          
+         
+        </tbody>
+    </table>
+      <table class="table table-borderless shadow p-3 mb-5 bg-white rounded float-right row-hover">
+      <thead>
+        <th>Year</th>
+        <th>Profit</th>
+      </thead>
+      <tbody>        
+        <tr role="button" (click)="setEPVProfit(stock.AvgProfit)">
+          <td>Average Profit</td>
+          <td >{{stock.AvgProfit |  number: '1.2-2'}}</td>
+        </tr>
+        <tr role="button" (click)="setEPVProfit(stock.ProfitCurr)">
+          <td>Current</td>
+          <td >{{stock.ProfitCurr |  number: '1.2-2'}}</td>
+        </tr>
+        <tr role="button" (click)="setEPVProfit(stock.Profit1)">
+          <td>Year -1</td>
+          <td >{{stock.Profit1 |  number: '1.2-2'}}</td>
+        </tr>
+        <tr role="button" (click)="setEPVProfit(stock.Profit2)">
+          <td>Year -2</td>
+          <td >{{stock.Profit2 |  number: '1.2-2'}}</td>
+        </tr>
+        <tr role="button" (click)="setEPVProfit(stock.Profit3)">
+          <td>Year -3</td>
+          <td >{{stock.Profit3 |  number: '1.2-2'}}</td>
+        </tr>
+        <tr role="button" (click)="setEPVProfit(stock.Profit4)">
+          <td>Year -4</td>
+          <td >{{stock.Profit4 |  number: '1.2-2'}}</td>
+        </tr>
+      </tbody>
+   </table>
+  </mat-tab>
+    <mat-tab label="Buffett Method">
+      <table class="table table-borderless shadow p-3 mb-5 bg-white rounded float-left">        
+        <tbody>
+          <tr >
+            <td></td>
+            <td >Profit considered for Calculation</td>
+            <td >{{buffettProfit |  number: '1.2-2'}}</td>
+          </tr>
+          <tr >
+            <td></td>
+            <td >CAGR considered for Calculation</td>
+            <td >{{buffettProfitGrowth |  percent}}</td>
+          </tr>
+          <tr>
+            <td></td>
+
+            <td >Borrowings (Cr)</td>
+            <td >{{stock.Debt |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Average CapEx 5 years (Cr)</td>
+            <td >{{stock.AvgCapex |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Average D&A 5 years (Cr)</td>
+            <td >{{stock.AvgDep |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td>Year from current</td>
+            <td >Net Profit (Cr)</td>
+            <td >Adjusted Value</td>
+          </tr>
+          <tr>
+            <td>+1</td>
+            <td >{{buffettProfitFut1 |  number: '1.2-2'}}</td>
+            <td >{{buffettProfitAdj1 |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td>+2</td>
+            <td >{{buffettProfitFut2 |  number: '1.2-2'}}</td>
+            <td >{{buffettProfitAdj2 |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td>+3</td>
+            <td >{{buffettProfitFut3 |  number: '1.2-2'}}</td>
+            <td >{{buffettProfitAdj3 |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td>+4</td>
+            <td >{{buffettProfitFut4 |  number: '1.2-2'}}</td>
+            <td >{{buffettProfitAdj4 |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td>+5</td>
+            <td >{{buffettProfitFut5 |  number: '1.2-2'}}</td>
+            <td >{{buffettProfitAdj5 |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td>Terminal Value</td>
+            <td >{{buffettTerminalValue |  number: '1.2-2'}}</td>
+            <td >{{buffettTerminalAdj |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Total (Cr)</td>
+            <td >{{buffettFinalTotal |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>IV3</td>
+            <td >{{buffettIV3 |  number: '1.2-2'}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Profitability</td>
+            <td >{{buffettProfitability3 | percent}}</td>
+          </tr>
+          
+         
+        </tbody>
+    </table>
+    <table class="table table-borderless shadow p-3 mb-5 bg-white rounded float-right row-hover">
+      <thead>
+        <th>Year</th>
+        <th>Profit</th>
+      </thead>
+      <tbody>
+        
+        <tr role="button" (click)="setProfit(stock.AvgProfit)">
+          <td>Average Profit</td>
+          <td >{{stock.AvgProfit |  number: '1.2-2'}}</td>
+        </tr>
+        <tr role="button" (click)="setProfit(stock.ProfitCurr)">
+          <td>Current</td>
+          <td >{{stock.ProfitCurr |  number: '1.2-2'}}</td>
+        </tr>
+        <tr role="button" (click)="setProfit(stock.Profit1)">
+          <td>Year -1</td>
+          <td >{{stock.Profit1 |  number: '1.2-2'}}</td>
+        </tr>
+        <tr role="button" (click)="setProfit(stock.Profit2)">
+          <td>Year -2</td>
+          <td >{{stock.Profit2 |  number: '1.2-2'}}</td>
+        </tr>
+        <tr role="button" (click)="setProfit(stock.Profit3)">
+          <td>Year -3</td>
+          <td >{{stock.Profit3 |  number: '1.2-2'}}</td>
+        </tr>
+        <tr role="button" (click)="setProfit(stock.Profit4)">
+          <td>Year -4</td>
+          <td >{{stock.Profit4 |  number: '1.2-2'}}</td>
+        </tr>
+      </tbody>
+  </table>
+  <table class="table table-borderless shadow p-3 mb-5 bg-white rounded float-right row-hover">
+      
+    <tbody>
+      <tr role="button" (click)="setCAGR(stock.CAGR5)">
+        <td class="row-hover">5 year CAGR:</td>
+        <td >{{stock.CAGR5 |  percent}}</td>
+      </tr>
+      <tr role="button" (click)="setCAGR(stock.CAGR3)">
+        <td>3 year CAGR:</td>
+        <td >{{stock.CAGR3 |  percent}}</td>
+      </tr>
+      <tr role="button" (click)="setCAGR(stock.CAGR1)">
+        <td>1 year CAGR:</td>
+        <td >{{stock.CAGR1 |  percent}}</td>
+      </tr>
+    </tbody>
+</table>
+<button (click)="setValues(stock)">Reset</button>    
+</mat-tab>
+  </mat-tab-group>

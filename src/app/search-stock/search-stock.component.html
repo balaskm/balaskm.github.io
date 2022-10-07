@@ -1,0 +1,18 @@
+<div class="jumbotron text-center">
+<form>
+    <mat-form-field class="input-group rounded searchbox">
+        <div class="form-outline input-group rounded">
+        <input type="search" class="jumbotron-heading "
+        placeholder="Type to find your dream stock..." aria-label="Search" aria-describedby="search-addon"
+         matInput [matAutocomplete]="autoStocks" [formControl]="stockFormControl"/>
+         </div>
+        <mat-autocomplete #autoStocks="matAutocomplete" (optionSelected)='getPosts($event.option.value)'>
+            <mat-option  *ngFor="let stock of filteredStocks | async" [value]="stock">
+                {{stock.Name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
+<h1 class="jumbotron-heading">OR</h1>
+<button  type="button" class="btn btn-outline-primary btn-lg btn-block" (click)="showProfitability()">Filter stocks with Profitability and Profit Growth </button>
+</div>

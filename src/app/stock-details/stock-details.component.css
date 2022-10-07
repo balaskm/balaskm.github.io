@@ -1,0 +1,48 @@
+.layout-style{
+    margin: 2%;
+    border-radius: 5%;
+    border-color: blueviolet;
+}
+
+.bg-blue{
+    background-color: rgb(0, 2, 116);
+    color: azure;
+
+}
+.bg-light-blue{
+    background-color: rgb(104, 106, 219);
+    color: azure;
+
+}
+
+.text-right{
+    text-align: justify;
+}
+
+.float-left { 
+    float: left; 
+    width: 50%; 
+} 
+.float-right { 
+    float: right; 
+    width: 50%; 
+} 
+
+.row-hover tr{
+    background-color: white;
+}
+.row-hover tr:hover{
+    background-color: #33c720;
+}
+
+
+
+/* ::ng-deep .mat-tab-labels .mat-tab-label-active {
+color:red;
+background-color: green;
+}
+
+::ng-deep .mat-tab-labels {
+color:blue;
+background-color: yellow;
+} */

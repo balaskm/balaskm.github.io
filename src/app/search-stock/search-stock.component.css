@@ -1,0 +1,13 @@
+.fullwidth{
+  width: 80%;
+
+}
+
+.searchbox{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 10%;
+    font-size: xx-large;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

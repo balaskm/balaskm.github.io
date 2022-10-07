@@ -1,0 +1,89 @@
+<!-- <div>
+    {{test}}
+    {{filterStocks.Profitability1}}
+    {{filterStocks.Profitability2}}
+    {{filterStocks.Profitability3}}
+    {{filterStocks.CAGR5}}
+    {{filterStocks.CAGR3}}
+    {{filterStocks.CAGR1}}
+</div> -->
+<div class="container-fluid filterbox">
+<mat-form-field appearance="fill">
+    <mat-label>Profitability1</mat-label>
+    <mat-select (selectionChange)="change($event)" (selectionChange)="change($event)">
+      <mat-option   value="p1gt25">More than 25%</mat-option>
+      <mat-option  value="p1gt50">More than 50%</mat-option>
+      <mat-option  value="p1gt100">More than 100%</mat-option>
+    </mat-select>    
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Profitability2</mat-label>
+    <mat-select (selectionChange)="change($event)">
+      <mat-option value="p2gt25">More than 25%</mat-option>
+      <mat-option value="p2gt50">More than 50%</mat-option>
+      <mat-option value="p2gt100">More than 100%</mat-option>
+    </mat-select>    
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Profitability3</mat-label>
+    <mat-select (selectionChange)="change($event)">
+      <mat-option value="p3gt25">More than 25%</mat-option>
+      <mat-option value="p3gt50">More than 50%</mat-option>
+      <mat-option value="p3gt100">More than 100%</mat-option>
+    </mat-select>    
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>5 yr CAGR</mat-label>
+    <mat-select (selectionChange)="change($event)">
+      <mat-option value="c5gt10">More than 10%</mat-option>
+      <mat-option value="c5gt20">More than 20%</mat-option>
+      <mat-option value="c5gt30">More than 30%</mat-option>
+    </mat-select>    
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>3 yr CAGR</mat-label>
+    <mat-select (selectionChange)="change($event)">
+      <mat-option value="c3gt10">More than 10%</mat-option>
+      <mat-option value="c3gt20">More than 20%</mat-option>
+      <mat-option value="c3gt30">More than 30%</mat-option>
+    </mat-select>    
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>1 yr CAGR</mat-label>
+    <mat-select (selectionChange)="change($event)">
+      <mat-option value="c1gt10">More than 10%</mat-option>
+      <mat-option value="c1gt20">More than 20%</mat-option>
+      <mat-option value="c1gt30">More than 30%</mat-option>
+    </mat-select>    
+  </mat-form-field>
+</div>
+
+<table class="table table-striped table-dark table-bordered table-hover tablestyles">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Stock Name</th>
+            <th scope="col">Profitability1</th>
+            <th scope="col">Profitability2</th>
+            <th scope="col">Profitability3</th>
+            <th scope="col">CAGR5</th>
+            <th scope="col">CAGR3</th>
+            <th scope="col">CAGR1</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stock of stocks |stockFilter : filterStocks" (click)='getPosts(stock)' role="button">
+            <td>{{stock.Name}}</td>
+            <td>{{stock.Profitability1 | percent}}</td>
+            <td>{{stock.Profitability2 | percent}}</td>
+            <td>{{stock.Profitability3 | percent}}</td>
+            <td>{{stock.CAGR5 | percent}}</td>
+            <td>{{stock.CAGR3 | percent}}</td>
+            <td>{{stock.CAGR1 | percent}}</td>
+        </tr>
+    </tbody>
+</table>
